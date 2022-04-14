@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student,String> {
-    Page<Student> findByNomContains(String kw, Pageable pageable);
+    //Page<Student> findByNomContains(String kw, Pageable pageable);
 }

@@ -19,7 +19,7 @@ public class EtudiantsApplication {
         SpringApplication.run(EtudiantsApplication.class, args);
     }
 
-    @Bean
+/*    @Bean
     CommandLineRunner start(IStudentServices studentServices,StudentRepository studentRepository){
         return args -> {
             Stream.of("anass","amine","hanan","ikram","hicham","ilham","soufiyan").forEach(name->{
@@ -34,6 +34,6 @@ public class EtudiantsApplication {
                 studentServices.saveStudent(student);
             });
         };
-    }
+    }*/
 
 }

@@ -2,6 +2,7 @@ package com.enset.etudiants.services;
 
 import com.enset.etudiants.entities.Student;
 import com.enset.etudiants.repositories.StudentRepository;
+import javafx.scene.control.Pagination;
 import lombok.Data;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,10 +23,18 @@ public class StudentServicesImpl implements IStudentServices{
     }
 
 
+
+
     @Override
     public Student saveStudent(Student student) {
         student.setId(UUID.randomUUID().toString());
         return studentRepository.save(student);
+    }
+
+
+    @Override
+    public List<Student> studentsList() {
+        return studentRepository.findAll();
     }
 
 }

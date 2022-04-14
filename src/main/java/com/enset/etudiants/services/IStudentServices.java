@@ -8,5 +8,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IStudentServices {
+    List<Student> studentsList();
     Student saveStudent(Student student);
 }
