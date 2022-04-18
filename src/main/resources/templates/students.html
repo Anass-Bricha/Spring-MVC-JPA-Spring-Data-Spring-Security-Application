@@ -7,13 +7,34 @@
     <title>Students Management</title>
 </head>
 <body>
-
-<div class="container mt-3">
-  <h2>Students Managment</h2>
-  <div class="container btn-primary mb-3">
-    <a th:href="@{/addStudent}">Add Student</a>
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/addStudent}">Add Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Link</a>
+        </li>
+      </ul>
+      <form class="d-flex" th:action="@{/index}" method="get">
+        <input class="form-control me-2" type="text" name="keyword">
+        <button class="btn btn-primary" type="submit">Recherche</button>
+      </form>
+    </div>
   </div>
-  <table class="table table-bordered">
+</nav>
+<div class="container m-0">
+  <h2>Students Managment</h2>
+  <table class="table table-bordered mt-3">
     <thead>
     <tr>
       <th>Nom</th>
@@ -22,6 +43,7 @@
       <th>Email</th>
       <th>Genre</th>
       <th>En Regle</th>
+      <th>Edit/Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -32,6 +54,10 @@
       <td th:text="${student.getEmail()}"/>
       <td th:text="${student.getGenre()}"/>
       <td th:text="${student.isEnRegle()}"/>
+      <td>
+        <a class="btn btn-danger" th:href="@{/delete/{id}(id=${student.id})}">Delete</a>
+        <a class="btn btn-success" th:href="@{/edit/{id}(id=${student.id})}">Update</a>
+      </td>
     </tr>
     </tbody>
   </table>
