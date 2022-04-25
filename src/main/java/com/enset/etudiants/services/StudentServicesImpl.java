@@ -3,12 +3,11 @@ package com.enset.etudiants.services;
 import com.enset.etudiants.entities.Student;
 import com.enset.etudiants.repositories.StudentRepository;
 import lombok.Data;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,13 +48,13 @@ public class StudentServicesImpl implements IStudentServices{
         if(optional.isPresent()){
             student = optional.get();
         }else{
-            throw new RuntimeException();
+            throw new RuntimeException("Cant find student");
         }
         return student;
     }
 
     @Override
-    public List<Student> findStudentBykeyword(String kw) {
-        return studentRepository.findByKeyword(kw);
+    public Page<Student> findStudentBykeyword(String kw,Pageable pageable) {
+        return studentRepository.findByKeyword(kw,pageable);
     }
 }

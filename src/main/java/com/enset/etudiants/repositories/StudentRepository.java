@@ -17,6 +17,6 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
     Optional<Student> findById(Long id);
     Page<Student> findByNomContaining(String kw, Pageable pageable);
     List<Student> findByNomContaining(String kw);
-    @Query(value = " select * from Student s where s.nom like %:keyword% or s.prenom like %:keyword%",nativeQuery = true)
-    List<Student> findByKeyword(@Param("keyword") String keyword);
+    @Query(value = " select * from Student s where s.nom like %:keyword% or s.prenom like %:keyword%",countQuery = "SELECT count(*) FROM Student",nativeQuery = true)
+    Page<Student> findByKeyword(@Param("keyword") String keyword , Pageable pageable);
 }
